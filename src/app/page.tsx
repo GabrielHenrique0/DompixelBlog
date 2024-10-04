@@ -11,30 +11,29 @@ interface Post {
   title: string;
   body: string;
   image: string;
+  author: string;
 }
 
 const HomePage = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState(''); // Estado para a barra de pesquisa
+  const [searchTerm, setSearchTerm] = useState('');
   const router = useRouter();
+  const [username, setUsername] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        // Buscar postagens da API
         const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
         const apiPosts = response.data.map((post: Post) => ({
           id: post.id,
           title: post.title,
           body: post.body,
-          image: 'https://via.placeholder.com/150', // Imagem simulada
+          image: 'https://via.placeholder.com/150',
+          author: 'desconhecido',
         }));
 
-        // Armazenar postagens da API no localStorage
         localStorage.setItem('apiPosts', JSON.stringify(apiPosts));
-
-        // Buscar postagens do localStorage
         const userPosts = JSON.parse(localStorage.getItem('userPosts') || '[]');
         setPosts([...apiPosts, ...userPosts]);
       } catch (error) {
@@ -45,13 +44,29 @@ const HomePage = () => {
     };
 
     fetchPosts();
+
+    const storedUsername = sessionStorage.getItem('loggedUser');
+    if (storedUsername) {
+      setUsername(storedUsername);
+    }
   }, []);
 
   const handleCreatePost = () => {
-    router.push('/create');
+    const isLoggedIn = sessionStorage.getItem('loggedUser') != null;
+
+    if (isLoggedIn) {
+      router.push('/create');
+    } else {
+      router.push('/login');
+    }
   };
 
-  // Lógica de filtragem
+  const handleLogout = () => {
+    sessionStorage.removeItem('loggedUser');
+    setUsername(null);
+    router.push('/'); // Redireciona para a página inicial após deslogar
+  };
+
   const filteredPosts = posts.filter((post) => {
     const searchTermLower = searchTerm.toLowerCase();
     return (
@@ -66,9 +81,19 @@ const HomePage = () => {
 
   return (
     <Container>
-      <Title order={1} mb="md">Postagens do Blog</Title>
-      
-      {/* Campo de Pesquisa */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Title order={1} mb="md">Postagens do Blog</Title>
+
+        {username ? (
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <Text>{username}</Text>
+            <Button onClick={handleLogout} ml="md">Sair</Button> {/* Altera de Deslogar para Sair */}
+          </div>
+        ) : (
+          <Button onClick={() => router.push('/login')}>Login</Button>
+        )}
+      </div>
+
       <TextInput
         placeholder="Buscar postagens..."
         value={searchTerm}
@@ -88,6 +113,7 @@ const HomePage = () => {
                 <Image src={post.image} alt={post.title} height={140} />
                 <Text weight={500} size="lg" mt="md">{post.title}</Text>
                 <Text size="sm" color="dimmed" mt="xs">{post.body.slice(0, 100)}...</Text>
+                <Text size="sm" color="dimmed" mt="xs">Autor: {post.author}</Text>
                 <Button
                   variant="link"
                   onClick={() => router.push(`/posts/${post.id}`)}

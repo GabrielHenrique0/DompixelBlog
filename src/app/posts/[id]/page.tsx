@@ -34,7 +34,7 @@ const PostDetail = () => {
             id: response.data.id,
             title: response.data.title,
             body: response.data.body,
-            image: 'https://via.placeholder.com/150', // Imagem simulada
+            image: response.data.imageUrl, // Imagem simulada
           };
           setPost(apiPost);
         }
