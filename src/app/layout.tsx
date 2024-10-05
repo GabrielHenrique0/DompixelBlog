@@ -1,4 +1,3 @@
-// src/app/layout.tsx
 import './globals.css';
 import { MantineProvider } from '@mantine/core';
 

@@ -6,8 +6,9 @@ import { Container, Button, Loader, Text, TextInput, Image, Title } from '@manti
 import { useRouter } from 'next/navigation';
 import PostCard from './components/postCards';
 
+// Altere o tipo do id para string
 interface Post {
-  id: number;
+  id: string;
   title: string;
   body: string;
   image: string;
@@ -26,7 +27,7 @@ const HomePage = () => {
       try {
         const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
         const apiPosts = response.data.map((post: Post) => ({
-          id: post.id,
+          id: post.id.toString(), // Certifique-se de que o id é uma string
           title: post.title,
           body: post.body,
           image: 'https://via.placeholder.com/150',

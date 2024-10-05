@@ -1,7 +1,15 @@
 import { Card, Image, Text, Button } from '@mantine/core';
 import { useRouter } from 'next/navigation';
 
-const PostCard = ({ post }) => {
+interface Post {
+  id: string;
+  title: string;
+  body: string;
+  author: string;
+  image: string;
+}
+
+const PostCard = ({ post }: { post: Post }) => {
   const router = useRouter();
   return (
     <Card className="card" shadow="sm" padding="lg" radius="md" withBorder>
