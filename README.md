@@ -44,3 +44,4 @@ Para executar o projeto localmente, siga as instruções abaixo:
 
 O projeto está acessível publicamente através da Vercel. Você pode acessar o blog pelo seguinte link:
 
+https://dompixelblog-6ymo.vercel.app/
