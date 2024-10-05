@@ -1,4 +1,3 @@
-// src/app/login/page.tsx
 'use client';
 
 import { useState } from 'react';
@@ -25,21 +24,21 @@ const LoginPage = () => {
   };
 
   return (
-    <Container className="login-page"> {/* Adiciona uma classe específica para a centralização */}
+    <Container className="login-page">
       <Button onClick={() => router.push('/')} style={{ position: 'absolute', top: '10px', left: '10px' }}>
         Voltar
       </Button>
       <Container className='containerLogin'>
         <Title>Login</Title>
         <TextInput
-        className='inputsForms'
+          className='inputsForms'
           label="Nome de Usuário"
           value={username}
           onChange={(event) => setUsername(event.currentTarget.value)}
           required
         />
         <TextInput
-        className='inputsForms'
+          className='inputsForms'
           label="Senha"
           type="password"
           value={password}

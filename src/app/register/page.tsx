@@ -43,7 +43,6 @@ const RegisterPage = () => {
 
   return (
     <Container className="cadastro-page">
-      {/* Botão de voltar */}
       <Button onClick={() => router.push('/login')} style={{ position: 'absolute', top: '10px', left: '10px' }}>
         Voltar
       </Button>
@@ -51,18 +50,16 @@ const RegisterPage = () => {
       <Container className='containerCadastro'>
         <Title>Cadastrar-se</Title>
 
-        {/* Campo para Nome de Usuário */}
         <TextInput
-        className='inputsForms'
+          className='inputsForms'
           label="Nome de Usuário"
           value={username}
           onChange={(event) => setUsername(event.currentTarget.value)}
           required
         />
 
-        {/* Campo para Senha */}
         <TextInput
-        className='inputsForms'
+          className='inputsForms'
           label="Senha"
           type="password"
           value={password}
@@ -70,9 +67,8 @@ const RegisterPage = () => {
           required
         />
 
-        {/* Campo para Confirmar Senha */}
         <TextInput
-        className='inputsForms'
+          className='inputsForms'
           label="Confirmar Senha"
           type="password"
           value={confirmPassword}
@@ -80,10 +76,8 @@ const RegisterPage = () => {
           required
         />
 
-        {/* Exibe erros, se houver */}
         {error && <Text color="red">{error}</Text>}
 
-        {/* Botão de cadastro */}
         <Button onClick={handleRegister} mt="md">Cadastrar</Button>
       </Container>
     </Container>

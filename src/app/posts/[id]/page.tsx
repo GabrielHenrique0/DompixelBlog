@@ -18,7 +18,7 @@ const PostDetail = () => {
   const [post, setPost] = useState<Post | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
-  
+
   useEffect(() => {
     const fetchPost = async () => {
       try {
@@ -35,7 +35,7 @@ const PostDetail = () => {
             id: response.data.id,
             title: response.data.title,
             body: response.data.body,
-            image: response.data.imageUrl, // Imagem simulada
+            image: response.data.imageUrl, // Template de imagem
           };
           setPost(apiPost);
         }

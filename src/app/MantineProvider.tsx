@@ -6,19 +6,19 @@ export function MantineWrapper({ children }: { children: React.ReactNode }) {
       theme={{
         colors: {
           brand: [
-            '#f0f',  // Tonalidade 0
-            '#e0e',  // Tonalidade 1
-            '#d0d',  // Tonalidade 2
-            '#c0c',  // Tonalidade 3
-            '#b0b',  // Tonalidade 4
-            '#a0a',  // Tonalidade 5
-            '#909',  // Tonalidade 6
-            '#808',  // Tonalidade 7
-            '#707',  // Tonalidade 8
-            '#606',  // Tonalidade 9
+            '#f0f', 
+            '#e0e',  
+            '#d0d',  
+            '#c0c',  
+            '#b0b',  
+            '#a0a',  
+            '#909',  
+            '#808',  
+            '#707',  
+            '#606', 
           ],
         },
-        primaryColor: 'brand', // Define a cor personalizada 'brand' como cor primária
+        primaryColor: 'brand',
       }}
     >
       {children}

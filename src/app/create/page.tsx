@@ -1,4 +1,3 @@
-// src/app/posts/create/page.tsx
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -10,11 +9,10 @@ const CreatePostPage = () => {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const [image, setImage] = useState('');
-  const [apiPostsCount, setApiPostsCount] = useState(0); // Novo estado para armazenar o número de postagens da API
+  const [apiPostsCount, setApiPostsCount] = useState(0);
   const router = useRouter();
 
   useEffect(() => {
-    // Buscar a contagem de postagens da API para garantir que o próximo ID seja sequencial
     const fetchApiPostsCount = async () => {
       try {
         const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
@@ -38,8 +36,7 @@ const CreatePostPage = () => {
     // Buscar postagens existentes
     const existingPosts = JSON.parse(localStorage.getItem('userPosts') || '[]');
 
-    // O próximo ID deve ser o maior entre as postagens da API + 1 e as postagens do usuário
-    const lastApiId = apiPostsCount; // ID da última postagem da API (por ex., 100)
+    const lastApiId = apiPostsCount;
     const lastUserId = existingPosts.length > 0 ? existingPosts[existingPosts.length - 1].id : lastApiId;
     const newId = lastUserId + 1;
 
@@ -48,7 +45,7 @@ const CreatePostPage = () => {
       id: newId,
       title,
       body,
-      image: image || 'https://via.placeholder.com/150', // Imagem padrão se não for fornecida
+      image: image || 'https://via.placeholder.com/150', // Template de imagem se não for fornecida
       author: loggedUser,
     };
 
