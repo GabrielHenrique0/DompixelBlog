@@ -1,7 +1,358 @@
 /* src/styles/globals.css */
 body {
-  margin: 0;
   padding: 0;
+  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  background-color: #f0f0f0;
+  background-color: #f8f9fa;
+  color: #333;
+  overflow-x: hidden; /* Adicionado para evitar scroll horizontal */
+}
+
+.botoes {
+  margin: 10px; /* Adicionado px para a margem */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #333; /* Cor do texto dos títulos */
+  margin-bottom: 1rem;
+}
+
+a {
+  color: #007bff; /* Link azul */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #0056b3; /* Efeito hover nos links */
+}
+
+button {
+  cursor: pointer;
+  background-color: #00AAE4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+
+
+/* Ajuste para os cards */
+.card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  width: 210px; /* Ajuste a largura do card */
+  padding: 10px; /* Espaçamento entre os cards */
+  display: flex; /* Adicionado para centralizar conteúdo */
+  flex-direction: column; /* Permite empilhar itens verticalmente */
+  align-items: center; /* Centraliza o conteúdo horizontalmente */
+  text-align: center; /* Centraliza o texto dentro do card */
+  justify-content: space-between; /* Espaço entre os itens, empurrando o botão para o final */
+}
+
+.card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Sombra mais forte ao passar o mouse */
+}
+
+.card img {
+  border-radius: 8px;
+  max-width: 100%; /* Ajusta a largura da imagem */
+  height: auto; /* Mantém a proporção da imagem */
+}
+
+/* Estilo do input de busca */
+input[type="text"], .mantine-TextInput-input {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  max-width: 500px;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus, .mantine-TextInput-input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.header {
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente o conteúdo do header */
+  align-items: center; /* Alinha verticalmente os itens ao centro */
+  height: 13vh;
+  background-color: #808080;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid #000;
+  margin-bottom: 20px;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between; /* Mantém o espaçamento entre os itens */
+  align-items: center; /* Alinha verticalmente os itens ao centro */
+  max-width: 1400px; /* Mesma largura do container */
+  width: 100%; /* Ocupa 100% da largura do header */
+}
+
+
+/* Estilos padrão para dispositivos maiores */
+.container {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Ajustes para dispositivos menores */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column; /* Alinha os itens em coluna em telas menores */
+    align-items: flex-start; /* Alinha os itens ao início */
+  }
+
+  .search-container {
+    flex-direction: column; /* Alinha os itens de busca em coluna */
+    align-items: flex-start; /* Alinha os itens ao início */
+    margin-bottom: 20px;
+  }
+
+  .cards-container {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Reduz a largura mínima dos cards */
+    gap: 20px; /* Reduz o espaço entre os cards */
+  }
+
+  .card {
+    width: 100%; /* Faz com que os cards ocupem toda a largura disponível */
+    max-width: 100%; /* Impede que os cards ultrapassem a largura do contêiner */
+    padding: 15px; /* Aumenta o padding */
+  }
+
+  .header {
+    height: auto; /* Permite que a altura do cabeçalho se ajuste ao conteúdo */
+    padding: 10px; /* Adiciona padding */
+  }
+
+  .botoes {
+    width: 100%; /* Faz os botões ocuparem toda a largura */
+    margin: 5px 0; /* Ajusta a margem para melhor espaçamento */
+  }
+}
+
+/* Ajustes para telas muito pequenas */
+@media (max-width: 480px) {
+  .header-content {
+    align-items: center; /* Alinha os itens ao centro */
+    text-align: center; /* Centraliza o texto */
+  }
+
+  .search-input {
+    width: 100%; /* Faz o input de busca ocupar toda a largura */
+  }
+
+  .user-info {
+    flex-direction: column; /* Alinha os elementos de usuário em coluna */
+    align-items: center; /* Centraliza os itens */
+  }
+
+  .card {
+    padding: 10px; /* Reduz o padding dos cards */
+  }
+}
+
+.user-info {
+  display: flex;
+  align-items: center; /* Alinha os itens de usuário verticalmente */
+  gap: 10px; /* Espaçamento entre os elementos de usuário */
+}
+
+.search-input {
+  margin-bottom: 20px;
+}
+
+.cards-container {
+  display: grid; /* Use grid para organizar os cards */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Diminui o tamanho mínimo dos cards */
+  gap: 35px; /* Aumenta o espaço entre os cards */
+  justify-items: center; /* Centraliza os itens no grid */
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+.grid-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza o conteúdo do card */
+}
+
+.containerLogin {
+  align-items: center; /* Centraliza o conteúdo horizontalmente */
+  text-align: center; /* Centraliza o texto dentro do card */
+}
+
+.containerLogin button{
+  margin: 5px;
+}
+
+.containerCadastro {
+  align-items: center; /* Centraliza o conteúdo horizontalmente */
+  text-align: center; /* Centraliza o texto dentro do card */
+}
+
+/* Adicione isso ao seu arquivo globals.css */
+
+/* Atualize o seu arquivo globals.css */
+
+.login-page {
+  height: 100vh; /* Ocupa exatamente a altura da janela, sem ultrapassar */
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  margin: 0; /* Remove margens */
+  padding: 0; /* Remove padding extra */
+  overflow: hidden; /* Evita o scroll */
+}
+
+.containerLogin {
+  background-color: white;
+  padding: 50px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.cadastro-page {
+  height: 100vh; /* Ocupa exatamente a altura da janela, sem ultrapassar */
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  margin: 0; /* Remove margens */
+  padding: 0; /* Remove padding extra */
+  overflow: hidden; /* Evita o scroll */
+}
+
+.containerCadastro {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 50px;
+  max-width: 450px; /* Limita a largura máxima */
+  text-align: center;
+  
+}
+
+.create-page {
+  height: 100vh; /* Ocupa exatamente a altura da janela, sem ultrapassar */
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  margin: 0; /* Remove margens */
+  padding: 0; /* Remove padding extra */
+  overflow: hidden; /* Evita o scroll */
+}
+
+.containerCreate {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 450px; /* Limita a largura máxima */
+  text-align: center;
+}
+
+/* src/components/PostCard.css */
+/* src/components/PostCard.css */
+.corpoPostagem {
+  display: -webkit-box;
+  display: box; /* Adicionado para a compatibilidade */
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical; /* Para compatibilidade com navegadores antigos */
+  -webkit-line-clamp: 3; /* Limita a 3 linhas */
+  line-clamp: 3; /* Para navegadores que suportam o padrão */
+  text-overflow: ellipsis; /* Adiciona '...' quando o texto é cortado */
+  color: #808080; /* Cor cinza opcional, você pode ajustar como quiser */
+}
+
+.post-page {
+  height: 100vh; /* Ocupa exatamente a altura da janela, sem ultrapassar */
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  margin: 0; /* Remove margens */
+  padding: 0; /* Remove padding extra */
+  overflow: hidden; /* Evita o scroll */
+}
+
+.containerPost {
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 450px; /* Limita a largura máxima */
+  text-align: center;
+  margin-top: 30px;
+}
+
+
+.containerPost img {
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  margin: 0;
+}
+
+.search-container {
+  display: flex;
+  align-items: center; /* Alinha verticalmente ao centro */
+  justify-content: space-between; /* Mantém espaço entre o título e o input */
+  margin-bottom: 16px; /* Espaçamento inferior */
+}
+
+.containerCreate input, 
+.containerCreate textarea {
+  width: 70%; /* O input e textarea agora ocupam 100% da largura */
+  max-width: 550px; /* Limita a largura máxima */
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 16px;
+  min-height: 20px;
+}
+
+.containerCreate textarea {
+  width: 70%; /* Ocupa toda a largura disponível */
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 16px;
+  resize: vertical; /* Permite redimensionar verticalmente */
+  max-height: 500px; /* Limita a altura máxima ao redimensionar */
+  transition: border-color 0.3s ease; /* Transição suave na borda */
+  border-radius: 4px;
+}
+
+/* Estilo no foco (animação azul) */
+.containerCreate textarea:focus {
+  border-color: #007bff; /* Borda azul ao focar */
+  outline: none; /* Remove a borda de foco padrão */
+}
+
+.inputsForms {
+  text-align: left;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  width: 100%;
+  
+}
+
+.card img {
+  height: 150px;
+  width: 150px;
 }

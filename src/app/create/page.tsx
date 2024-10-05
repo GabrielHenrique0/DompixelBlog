@@ -60,26 +60,32 @@ const CreatePostPage = () => {
   };
 
   return (
-    <Container>
-      <Title>Criar Nova Postagem</Title>
-      <TextInput
-        label="Título"
-        value={title}
-        onChange={(event) => setTitle(event.currentTarget.value)}
-        required
-      />
-      <Textarea
-        label="Conteúdo"
-        value={body}
-        onChange={(event) => setBody(event.currentTarget.value)}
-        required
-      />
-      <TextInput
-        label="URL da Imagem"
-        value={image}
-        onChange={(event) => setImage(event.currentTarget.value)}
-      />
-      <Button onClick={handleCreatePost} mt="md">Criar</Button>
+    <Container className="create-page">
+      <Button onClick={() => router.push('/')} style={{ position: 'absolute', top: '10px', left: '10px' }}>
+        Voltar
+      </Button>
+      <Container className='containerCreate'>
+        <Title>Criar Nova Postagem</Title>
+        <TextInput
+          label="Título"
+          value={title}
+          onChange={(event) => setTitle(event.currentTarget.value)}
+          required
+        />
+        <Textarea
+          className='conteudoPostagem'
+          label="Conteúdo"
+          value={body}
+          onChange={(event) => setBody(event.currentTarget.value)}
+          required
+        />
+        <TextInput
+          label="URL da Imagem"
+          value={image}
+          onChange={(event) => setImage(event.currentTarget.value)}
+        />
+        <Button onClick={handleCreatePost} mt="md">Criar</Button>
+      </Container>
     </Container>
   );
 };

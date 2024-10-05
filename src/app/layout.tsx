@@ -10,7 +10,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <MantineProvider withGlobalStyles withNormalizeCSS>
+        <MantineProvider>
           {children}
         </MantineProvider>
       </body>

@@ -1,10 +1,10 @@
-// src/app/page.tsx
 'use client';
 
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Container, Title, Button, Loader, Grid, Card, Text, Image, TextInput } from '@mantine/core';
+import { Container, Button, Loader, Text, TextInput, Image, Title } from '@mantine/core';
 import { useRouter } from 'next/navigation';
+import PostCard from './components/postCards';
 
 interface Post {
   id: number;
@@ -30,7 +30,7 @@ const HomePage = () => {
           title: post.title,
           body: post.body,
           image: 'https://via.placeholder.com/150',
-          author: 'desconhecido',
+          author: 'API',
         }));
 
         localStorage.setItem('apiPosts', JSON.stringify(apiPosts));
@@ -80,55 +80,51 @@ const HomePage = () => {
   }
 
   return (
-    <Container>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Title order={1} mb="md">Postagens do Blog</Title>
-
-        {username ? (
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <Text>{username}</Text>
-            <Button onClick={handleLogout} ml="md">Sair</Button> {/* Altera de Deslogar para Sair */}
-          </div>
-        ) : (
-          <Button onClick={() => router.push('/login')}>Login</Button>
-        )}
+    <>
+      <div className="header">
+        <div className="header-content">
+          <Button onClick={() => router.push('/')} style={{ border: 'none', background: 'none', padding: 0 }}>
+            <Image src="/imgs/logo.png" alt="Logo do Blog" fit="contain" height={60} />
+          </Button>
+          {username ? (
+            <div className="user-info">
+              <strong>Usuário: {username}</strong>
+              <Button className="botoes" onClick={handleLogout} ml="md">Sair</Button>
+            </div>
+          ) : (
+            <div>
+              <Button className="botoes" onClick={() => router.push('/login')}>Login</Button>
+              <Button className="botoes" onClick={() => router.push('/register')}>Cadastrar</Button>
+            </div>
+          )}
+        </div>
       </div>
 
-      <TextInput
-        placeholder="Buscar postagens..."
-        value={searchTerm}
-        onChange={(event) => setSearchTerm(event.currentTarget.value)}
-        mb="md"
-      />
+      <Container className="container">
+        <div className="search-container">
+          <Title order={1} mb="md">Postagens do Blog</Title>
+          <TextInput
+            className="search-input"
+            placeholder="Buscar postagens..."
+            value={searchTerm}
+            onChange={(event) => setSearchTerm(event.currentTarget.value)}
+            mb="md"
+          />
+        </div>
 
-      <Button onClick={handleCreatePost} mb="md">
-        Criar Nova Postagem
-      </Button>
+        <Button className="botaoCriarPostagem" onClick={handleCreatePost} mb="md">
+          Criar Nova Postagem
+        </Button>
 
-      <Grid>
-        {filteredPosts.length > 0 ? (
-          filteredPosts.map((post) => (
-            <Grid.Col key={post.id} span={4}>
-              <Card shadow="sm" padding="lg">
-                <Image src={post.image} alt={post.title} height={140} />
-                <Text weight={500} size="lg" mt="md">{post.title}</Text>
-                <Text size="sm" color="dimmed" mt="xs">{post.body.slice(0, 100)}...</Text>
-                <Text size="sm" color="dimmed" mt="xs">Autor: {post.author}</Text>
-                <Button
-                  variant="link"
-                  onClick={() => router.push(`/posts/${post.id}`)}
-                  mt="md"
-                >
-                  Ver Mais
-                </Button>
-              </Card>
-            </Grid.Col>
-          ))
-        ) : (
-          <Text>Nenhuma postagem encontrada</Text>
-        )}
-      </Grid>
-    </Container>
+        <div className="cards-container">
+          {filteredPosts.length > 0 ? (
+            filteredPosts.map((post) => <PostCard key={post.id} post={post} />)
+          ) : (
+            <Text>Nenhuma postagem encontrada</Text>
+          )}
+        </div>
+      </Container>
+    </>
   );
 };
 

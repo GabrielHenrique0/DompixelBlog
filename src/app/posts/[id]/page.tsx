@@ -2,9 +2,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import axios from 'axios';
-import { Container, Title, Text, Image, Loader } from '@mantine/core';
+import { Container, Title, Text, Image, Loader, Button } from '@mantine/core';
 
 interface Post {
   id: number;
@@ -17,7 +17,8 @@ const PostDetail = () => {
   const { id } = useParams();
   const [post, setPost] = useState<Post | null>(null);
   const [loading, setLoading] = useState(true);
-
+  const router = useRouter();
+  
   useEffect(() => {
     const fetchPost = async () => {
       try {
@@ -57,10 +58,15 @@ const PostDetail = () => {
   }
 
   return (
-    <Container>
-      <Title>{post.title}</Title>
-      <Image src={post.image} alt={post.title} height={200} mt="md" />
-      <Text mt="md">{post.body}</Text>
+    <Container className="post-page">
+      <Button onClick={() => router.push('/')} style={{ position: 'absolute', top: '10px', left: '10px' }}>
+        Voltar
+      </Button>
+      <Container className='containerPost'>
+        <Title>{post.title}</Title>
+        <Image src={post.image} alt={post.title} width={200} height={200} mt="md" />
+        <Text mt="md">{post.body}</Text>
+      </Container>
     </Container>
   );
 };
