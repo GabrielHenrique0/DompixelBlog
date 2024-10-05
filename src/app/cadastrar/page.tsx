@@ -1,4 +1,3 @@
-// src/app/register/page.tsx
 'use client';
 
 import { useState } from 'react';
@@ -8,7 +7,7 @@ import { Container, TextInput, Button, Title, Text } from '@mantine/core';
 const RegisterPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState(''); // Novo estado para confirmar a senha
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const router = useRouter();
 
@@ -43,15 +42,15 @@ const RegisterPage = () => {
 
   return (
     <Container className="cadastro-page">
-      <Button onClick={() => router.push('/login')} style={{ position: 'absolute', top: '10px', left: '10px' }}>
+      <Button onClick={() => router.push('/')} style={{ position: 'absolute', top: '10px', left: '10px' }}>
         Voltar
       </Button>
 
-      <Container className='containerCadastro'>
+      <Container className="containerCadastro">
         <Title>Cadastrar-se</Title>
 
         <TextInput
-          className='inputsForms'
+          className="inputsForms"
           label="Nome de Usuário"
           value={username}
           onChange={(event) => setUsername(event.currentTarget.value)}
@@ -59,7 +58,7 @@ const RegisterPage = () => {
         />
 
         <TextInput
-          className='inputsForms'
+          className="inputsForms"
           label="Senha"
           type="password"
           value={password}
@@ -68,7 +67,7 @@ const RegisterPage = () => {
         />
 
         <TextInput
-          className='inputsForms'
+          className="inputsForms"
           label="Confirmar Senha"
           type="password"
           value={confirmPassword}
@@ -76,7 +75,7 @@ const RegisterPage = () => {
           required
         />
 
-        {error && <Text color="red">{error}</Text>}
+        {error && <Text>{error}</Text>}
 
         <Button onClick={handleRegister} mt="md">Cadastrar</Button>
       </Container>

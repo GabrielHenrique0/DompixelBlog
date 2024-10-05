@@ -221,7 +221,7 @@ input[type="text"]:focus, .mantine-TextInput-input:focus {
   padding: 20px;
 }
 
-.corpoPostagem {
+.conteudoPostagem {
   display: -webkit-box;
   overflow: hidden;
   -webkit-box-orient: vertical;
@@ -295,4 +295,8 @@ h1 {
 .card img {
   height: 150px;
   width: 150px;
+}
+
+#botaoSair {
+  background-color: rgb(208, 0, 0);
 }

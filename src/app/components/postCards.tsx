@@ -7,7 +7,7 @@ const PostCard = ({ post }) => {
     <Card className="card" shadow="sm" padding="lg" radius="md" withBorder>
       <Image src={post.image} alt={post.title} width={200} height={200} />
       <h4>{post.title}</h4>
-      <Text className='corpoPostagem'>{post.body}</Text>
+      <Text className="conteudoPostagem">{post.body}</Text>
       <Text>Autor: {post.author}</Text>
       <Button
         variant="link"

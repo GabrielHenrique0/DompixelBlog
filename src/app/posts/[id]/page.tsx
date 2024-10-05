@@ -1,4 +1,3 @@
-// src/app/posts/[id]/page.tsx
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -62,7 +61,7 @@ const PostDetail = () => {
       <Button onClick={() => router.push('/')} style={{ position: 'absolute', top: '10px', left: '10px' }}>
         Voltar
       </Button>
-      <Container className='containerPost'>
+      <Container className="containerPost">
         <Title>{post.title}</Title>
         <Image src={post.image} alt={post.title} width={200} height={200} mt="md" />
         <Text mt="md">{post.body}</Text>

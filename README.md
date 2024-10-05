@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DompixelBlog
 
-## Getting Started
+## Descrição do Projeto
 
-First, run the development server:
+O **DompixelBlog** é uma aplicação de blog desenvolvida em Next.js, que permite aos usuários criar, visualizar e gerenciar postagens. O projeto utiliza componentes do Mantine para estilização e fornece funcionalidades como login, criação e busca de postagens com imagens e responsividade.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Como Executar o Projeto
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Para executar o projeto localmente, siga as instruções abaixo:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Pré-requisitos
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- [Node.js](https://nodejs.org/) (v14 ou superior)
+- [npm](https://www.npmjs.com/) (geralmente instalado com o Node.js)
 
-## Learn More
+### Passos
 
-To learn more about Next.js, take a look at the following resources:
+1. **Clone o repositório**:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    ```bash
+    git clone https://github.com/seuusuario/dompixelblog.git
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Acesse o diretório do projeto**:
 
-## Deploy on Vercel
+    ```bash
+    cd dompixelblog
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Instale as dependências**:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+    ```bash
+    npm install
+
+4. **Execute o servidor de desenvolvimento:**
+
+    ```bash
+    npm run dev
+
+5. **Abra o navegador e acesse:**
+
+    ```bash
+    http://localhost:3000
+
+## Deploy
+
+O projeto está acessível publicamente através da Vercel. Você pode acessar o blog pelo seguinte link:
+

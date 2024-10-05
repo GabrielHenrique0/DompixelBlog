@@ -16,7 +16,7 @@ const CreatePostPage = () => {
     const fetchApiPostsCount = async () => {
       try {
         const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
-        setApiPostsCount(response.data.length); // A API tem 100 postagens
+        setApiPostsCount(response.data.length);
       } catch (error) {
         console.error('Erro ao buscar as postagens da API:', error);
       }
@@ -61,8 +61,8 @@ const CreatePostPage = () => {
       <Button onClick={() => router.push('/')} style={{ position: 'absolute', top: '10px', left: '10px' }}>
         Voltar
       </Button>
-      <Container className='containerCreate'>
-        <Title>Criar Nova Postagem</Title>
+      <Container className="containerCreate">
+        <Title>Criar nova postagem</Title>
         <TextInput
           label="Título"
           value={title}
@@ -70,7 +70,7 @@ const CreatePostPage = () => {
           required
         />
         <Textarea
-          className='conteudoPostagem'
+          className="conteudoPostagem"
           label="Conteúdo"
           value={body}
           onChange={(event) => setBody(event.currentTarget.value)}

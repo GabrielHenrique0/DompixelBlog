@@ -17,7 +17,7 @@ const LoginPage = () => {
     if (user) {
       sessionStorage.setItem('loggedUser', username);
       alert('Login realizado com sucesso!');
-      router.push('/');
+      router.push('/postar');
     } else {
       setError('Usuário ou senha incorretos');
     }
@@ -28,26 +28,26 @@ const LoginPage = () => {
       <Button onClick={() => router.push('/')} style={{ position: 'absolute', top: '10px', left: '10px' }}>
         Voltar
       </Button>
-      <Container className='containerLogin'>
+      <Container className="containerLogin">
         <Title>Login</Title>
         <TextInput
-          className='inputsForms'
+          className="inputsForms"
           label="Nome de Usuário"
           value={username}
           onChange={(event) => setUsername(event.currentTarget.value)}
           required
         />
         <TextInput
-          className='inputsForms'
+          className="inputsForms"
           label="Senha"
           type="password"
           value={password}
           onChange={(event) => setPassword(event.currentTarget.value)}
           required
         />
-        {error && <Text color="red">{error}</Text>}
+        {error && <Text>{error}</Text>}
         <Button onClick={handleLogin} mt="md">Entrar</Button>
-        <Button onClick={() => router.push('/register')} mt="md">Cadastrar</Button>
+        <Button onClick={() => router.push('/cadastrar')} mt="md">Cadastrar</Button>
       </Container>
     </Container>
   );

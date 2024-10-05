@@ -55,7 +55,7 @@ const HomePage = () => {
     const isLoggedIn = sessionStorage.getItem('loggedUser') != null;
 
     if (isLoggedIn) {
-      router.push('/create');
+      router.push('/postar');
     } else {
       router.push('/login');
     }
@@ -64,7 +64,7 @@ const HomePage = () => {
   const handleLogout = () => {
     sessionStorage.removeItem('loggedUser');
     setUsername(null);
-    router.push('/'); // Redireciona para a página inicial após deslogar
+    router.push('/');
   };
 
   const filteredPosts = posts.filter((post) => {
@@ -89,12 +89,12 @@ const HomePage = () => {
           {username ? (
             <div className="user-info">
               <strong>Usuário: {username}</strong>
-              <Button className="botoes" onClick={handleLogout} ml="md">Sair</Button>
+              <Button className="botoes" id="botaoSair" onClick={handleLogout} ml="md">Sair</Button>
             </div>
           ) : (
             <div>
               <Button className="botoes" onClick={() => router.push('/login')}>Login</Button>
-              <Button className="botoes" onClick={() => router.push('/register')}>Cadastrar</Button>
+              <Button className="botoes" onClick={() => router.push('/cadastrar')}>Cadastrar</Button>
             </div>
           )}
         </div>
@@ -102,7 +102,7 @@ const HomePage = () => {
 
       <Container className="container">
         <div className="search-container">
-          <Title order={1} mb="md">Postagens do Blog</Title>
+          <Title order={1} mb="md">Postagens do blog</Title>
           <TextInput
             className="search-input"
             placeholder="Buscar postagens..."
@@ -113,7 +113,7 @@ const HomePage = () => {
         </div>
 
         <Button className="botaoCriarPostagem" onClick={handleCreatePost} mb="md">
-          Criar Nova Postagem
+          Criar nova postagem
         </Button>
 
         <div className="cards-container">
